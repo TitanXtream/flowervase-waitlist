@@ -17,8 +17,13 @@ const Navbar = () => {
       <div className='flex ml-[3rem] gap-[2rem] items-center'>
         {navbarOption.map((opt) => {
           return (
-            <Link href={opt.link} key={opt.link}>
+            <Link
+              href={opt.link}
+              key={opt.link}
+              className='relative group hover:text-primary transition-[color] duration-150'
+            >
               {opt.label}
+              <div className='absolute bottom-[-2px] h-[2px] w-0 bg-black group-hover:w-full transition-[width,_background-color] duration-150 group-hover:bg-primary'></div>
             </Link>
           );
         })}

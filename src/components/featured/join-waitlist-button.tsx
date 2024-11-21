@@ -1,8 +1,18 @@
-import { Button } from '../ui/button';
+import { Button, ButtonProps } from '../ui/button';
 import React from 'react';
 
-const JoinWaitlistButton = ({ className }: { className: string }) => {
-  return <Button className={className}>Join the waitlist</Button>;
+const JoinWaitlistButton = ({
+  className,
+  size,
+}: {
+  className?: string;
+  size?: ButtonProps['size'];
+}) => {
+  return (
+    <Button className={className} size={size}>
+      Join the waitlist
+    </Button>
+  );
 };
 
 export default JoinWaitlistButton;

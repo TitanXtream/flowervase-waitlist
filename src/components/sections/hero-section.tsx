@@ -9,7 +9,7 @@ const HeroSection = () => {
         <h1 className='lg:text-[2.5rem] text-[2rem] font-semibold'>
           Your Single AI assistant for
         </h1>
-        <h1 className='lg:text-[2.9rem] text-[2.5rem] font-extrabold leading-[110%] mt-[1rem] animate-header-dark text-transparent bg-clip-text bg-gradient-to-r from-black via-blue-300 to-black bg-double'>
+        <h1 className='lg:text-[2.9rem] text-[2.5rem] font-extrabold leading-[110%] mt-[1rem] animate-header-dark text-transparent bg-clip-text bg-gradient-to-r from-black via-primary to-black bg-double'>
           Video, Voiceover, Script, Thumbnail and Caption
         </h1>
         <h1 className='text-[2rem] leading-[110%] mt-[1rem]'>
@@ -31,6 +31,7 @@ const HeroSection = () => {
           Instagram, YouTube, and X in just 4 clicks — hooks, hashtags, CTAs,
           scripts, and thumbnails, all platform-optimized
         </p>
+        <div className='h-[2rem]'></div>
 
         <JoinWaitlistButton className='mt-auto' />
       </div>
