@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   darkMode: ['class'],
@@ -21,6 +22,9 @@ export default {
           '2xl': '6rem',
         },
         center: true,
+      },
+      boxShadow: {
+        lvl1: '0 4px 4px #00000040',
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -73,7 +77,7 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        'header-highlight-dark': {
+        'shift-background': {
           '0%': {
             backgroundPosition: '100% 50%',
           },
@@ -86,10 +90,34 @@ export default {
         },
       },
       animation: {
-        'header-dark': 'header-highlight-dark 20s ease-in infinite',
+        'highlight-text': 'shift-background 20s ease-in infinite',
       },
     },
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(({ theme, addUtilities }) => {
+      const highlightClasses = {
+        color: 'transparent',
+        backgroundSize: '200% 200%',
+        backgroundClip: 'text',
+        // animation: 'shift-background 20s ease-in infinite',
+        animation: theme('animation.highlight-text') as string,
+      };
+      const textHighlights = {
+        '.text-highlight-primary': {
+          ...highlightClasses,
+          backgroundImage:
+            'linear-gradient(to right, hsl(var(--foreground)), hsl(var(--primary)), hsl(var(--foreground)))',
+        },
+        '.text-highlight-secondary': {
+          ...highlightClasses,
+          backgroundImage:
+            'linear-gradient(to right, hsl(var(--background)), hsl(var(--primary)), hsl(var(--background)))',
+        },
+      };
+      addUtilities(textHighlights);
+    }),
+  ],
 } satisfies Config;
